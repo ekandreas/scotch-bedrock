@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
         sudo service apache2 reload
         printf "DB_NAME=scotchbox\nDB_USER=root\nDB_PASSWORD=root\nDB_HOST=127.0.0.1\nWP_ENV=development\nWP_HOME=http://#{hostname}.dev\nWP_SITEURL=http://#{hostname}.dev/wp" > /var/www/#{hostname}.dev/.env
         cd /var/www/#{hostname}.dev/web && wp core install --allow-root --url=http://#{hostname}.dev --title=#{hostname} --admin_user=admin --admin_password=admin --admin_email=admin@#{hostname}.dev --quiet
-        cd /var/www/ && git add #{hostname}.dev
+        cd /var/www/ && git add #{hostname}.dev && git remote remove origin
     SHELL
 
     config.vm.provider :virtualbox do |vb|
